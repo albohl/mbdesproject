@@ -1,0 +1,44 @@
+make model of elevator
+	- should accurately model correspondence between the input to the DC motor
+	  and the speed of the elevator (as measured by the sensor)
+
+make driver blocks
+	-using matlab system object?
+		-sensor
+		-motor
+
+take measurements
+
+make actual controller
+	-make it stop when emergency button is pressed
+		-make emergency led light up
+		-make it start again after
+			-continue what it was doing or go to nearest floor?
+			-kill light
+	-when stopped at floor
+		-make door led light up
+		-wait >5 sec
+		-light must be off before moving again
+	-make it run smoothly
+		-limit speed and acceleration
+	-make it robust to faults
+		-check if delta(dsens) is too high
+		-estimate actual position p with integral(k*u) + dstart, u=output speed for dc motor
+			-need to get estimate of actual distance traveled as it corresponds 
+			to dc motor speed up/down (find k)
+	-make algorithm for floor planning
+
+write report
+	-describe overall design effort
+		-what decisions were made for each part
+			-models
+			-driver block
+				-motor
+				-sensor
+	-describe procedure of producing a model of the motor-elevator behaviour
+	 (simulink model?)
+
+prep demo
+	-log and save inputs and outputs
+		-presumably it should be run plugged in to computer (not external mode)
+	-apply those inputs to simulink model and compare simulated outputs to real

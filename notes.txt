@@ -1,0 +1,50 @@
+normal mode -> simulation
+external mode -> run on hardware but have simulink act as GUI and monitor
+build button -> just run on hardware (I think)
+
+solver Discrete is simplest for hardware to run but is bad for integrators
+
+use statevector xD[] to pass information between update and outputs
+
+use variables to store buttons pressed
+if on floor n, with floor m queued, if floor l is pressed with n<l<m, then stop at l first. If l<n,
+or l>m, queue l after.
+
+controller(b1,..,b4,bE,distance,){
+	
+	return(eLEDout, dLEDout, DC out)
+}
+
+setDirection()
+	if direction = 0
+		if pressed < current
+			direction = -1
+		if pressed > current
+			direction = 1
+
+enqueue()
+	if direction = 1
+		for i in 1:length(queue) #length?
+			if pressed = queue(i)
+				return
+			if pressed > queue(i) & pressed < queue(i+1)
+				queue[i+2, ... length(queue)] = queue[i+1, ... length(queue)]
+				queue[i+1] = pressed
+			else
+				queue[last] = pressed
+	else if direction = -1
+		for i in 1:length(queue) #length?
+			if pressed = queue(i)
+					return		
+			if pressed < queue(i) & pressed > queue(i+1)
+				queue[i+2, ... length(queue)] = queue[i+1, ... length(queue)]
+				queue[i+1] = pressed
+			else
+				queue[last] = pressed
+	
+dequeue()
+	if length(queue) = 1
+	dest = queue[1]
+	shift(queue, -1)
+	return dest
+	
