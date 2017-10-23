@@ -2,12 +2,15 @@ make model of elevator
 	- should accurately model correspondence between the input to the DC motor
 	  and the speed of the elevator (as measured by the sensor)
 
-make driver blocks
+make driver blocks x
 	-using matlab system object?
-		-sensor
-		-motor
+		-sensor x
+		-motor x
 
 take measurements
+	-read distances from file
+	-make model to read distances
+	-make model to test speeds and thresholds
 
 make actual controller
 	-make it stop when emergency button is pressed
