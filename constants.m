@@ -1,6 +1,6 @@
 downDCDelta = -15;
 
-downDCMax = 255;
+downDCMax = -255;
 
 downDCThreshold = -100;
 
